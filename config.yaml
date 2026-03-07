@@ -1,0 +1,16 @@
+entity: bluetti
+server:
+  host: 0.0.0.0
+  port: 6100
+log_level: INFO
+devices:
+  - entity: master
+    device_number: 0
+    ble_mac: 94:54:C5:F6:8B:12
+    timeout: 30
+    poll_ttl: 5
+  - entity: slave
+    device_number: 1
+    ble_mac: F0:24:F9:E9:E5:52
+    timeout: 30
+    poll_ttl: 5

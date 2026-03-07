@@ -1,0 +1,11 @@
+fastapi>=0.100.0
+fastapi[standard]>=0.100.0
+uvicorn>=0.22.0
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+pyyaml>=6.0
+loguru>=0.7.0
+python-dotenv>=1.0.0
+bluetti_mqtt>=0.15.0
+bleak>=0.21.0
+alpyca>=3.1.1
