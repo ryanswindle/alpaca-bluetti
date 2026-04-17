@@ -115,6 +115,7 @@ host network (for BLE and Alpaca discovery):
 ```bash
 docker build -t alpaca-bluetti .
 docker run -d --name alpaca-bluetti \
+    -v ./config.yaml:/alpyca/config.yaml:ro \
     --privileged \
     --net=host \
     -v /var/run/dbus:/var/run/dbus \

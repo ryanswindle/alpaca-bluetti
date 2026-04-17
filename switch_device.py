@@ -293,6 +293,10 @@ class SwitchDevice:
         self._connect_error = None
         logger.info(f"Disconnected from Bluetti: {self._config.entity}")
 
+    @property
+    def entity(self) -> str:
+        return self._config.entity
+
     ########################
     # ISwitchV3 properties #
     ########################
