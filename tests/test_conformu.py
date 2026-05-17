@@ -38,7 +38,7 @@ from pathlib import Path
 import yaml
 
 
-REPO = Path(__file__).resolve().parent
+REPO = Path(__file__).resolve().parent.parent
 CONFIG_PATH = REPO / "config.yaml"
 README_PATH = REPO / "README.md"
 
@@ -200,7 +200,7 @@ def main() -> int:
         print("Starting server (main.py)...")
         server_log = open("/tmp/test_conformu_server.log", "w")
         server_proc = subprocess.Popen(
-            [sys.executable, str(REPO / "main.py")],
+            [sys.executable, str(REPO / "src" / "main.py")],
             cwd=REPO, stdout=server_log, stderr=subprocess.STDOUT,
         )
         if not wait_for_server(args.host, port):
