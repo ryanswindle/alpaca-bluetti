@@ -13,7 +13,9 @@ Entrypoint that:
 from contextlib import asynccontextmanager
 from typing import Dict
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 
 from config import config
 from discovery import DiscoveryResponder
@@ -73,6 +75,13 @@ app = FastAPI(
 )
 
 # Include routers
+@app.exception_handler(RequestValidationError)
+async def _alpaca_validation_handler(request: Request, exc: RequestValidationError):
+    """Alpaca clients (e.g. ConformU) expect HTTP 400 for malformed
+    parameters; FastAPI defaults to 422. Remap so we match the spec."""
+    return JSONResponse(status_code=400, content={"detail": exc.errors()})
+
+
 app.include_router(management.router)
 app.include_router(setup.router)
 app.include_router(switch.router)
